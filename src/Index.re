@@ -1,5 +1,7 @@
-ReactDOMRe.renderToElementWithId(<Component1 message="Hello!" />, "index1");
+/* ReactDOMRe.renderToElementWithId(<Component1 message="Hello!" />, "index1");
 
-ReactDOMRe.renderToElementWithId(<Component2 greeting="Hello" />, "index2");
+   ReactDOMRe.renderToElementWithId(<Component2 greeting="Hello" />, "index2");
 
-ReactDOMRe.renderToElementWithId(<Greeting name="Jed" />, "greeting");
+   ReactDOMRe.renderToElementWithId(<Greeting name="Jed" />, "greeting"); */
+
+ReactDOMRe.renderToElementWithId(<Main />, "root");
