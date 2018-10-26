@@ -52,7 +52,8 @@ function make(greeting, _) {
                           ]]);
               }
             }),
-          /* jsElementWrapped */component[/* jsElementWrapped */13]
+          /* subscriptions */component[/* subscriptions */13],
+          /* jsElementWrapped */component[/* jsElementWrapped */14]
         ];
 }
 
