@@ -2,14 +2,12 @@
 
 ## Run Project
 
-```sh
-npm install
-npm start
-# in another tab
-npm run webpack
-```
+- Install dependencies: `yarn install`  
+- Start bucklescript to compile .re to .js: `yarn start`  
+- Start webpack in watch mode to bundle .js files: `yarn webpack`  
+- Open page in chrome: `yarn chrome`
 
-After you see the webpack compilation succeed (the `npm run webpack` step), open up `src/index.html` (**no server needed!**). Then modify whichever `.re` file in `src` and refresh the page to see the changes.
+Have to refresh the page to see changes (no hot reload)
 
 **For more elaborate ReasonReact examples**, please see https://github.com/reasonml-community/reason-react-example
 

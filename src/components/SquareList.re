@@ -27,20 +27,25 @@ let make = _children => {
 
   render: self =>
     <div>
-      {ReasonReact.string("Hello can you see this? Again? Test")}
+      {ReasonReact.string("Hello can you see this?")}
       <div className="item-list">
         {
           ReasonReact.array(
-            Array.mapi(
-              (index, _square) => <Square key={string_of_int(index)} />,
-              Array.of_list(self.state.items),
-            ),
+            List.map(
+              square =>
+                <Square
+                  key={square.id}
+                  handleClick={_event => self.send(Remove(square.id))}
+                />,
+              self.state.items,
+            )
+            |> Array.of_list,
           )
         }
       </div>
       <div className="buttons-container">
         <button
-          onClick={_event => self.send(Add({id: "test", text: "Hello"}))}>
+          onClick={_event => self.send(Add({id: Uuid.v4(), text: "Hello"}))}>
           {ReasonReact.string("Add")}
         </button>
       </div>

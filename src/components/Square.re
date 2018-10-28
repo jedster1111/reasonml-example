@@ -1,26 +1,30 @@
-type state = {isClicked: bool};
+type state = {hasBeenHovered: bool};
 
 type action =
-  | Click;
+  | Hover
+  | Unhover;
 
 let component = ReasonReact.reducerComponent("Square");
 
-let make = _children => {
+let make = (~handleClick, _children) => {
   ...component,
 
-  initialState: () => {isClicked: false},
+  initialState: () => {hasBeenHovered: false},
 
-  reducer: (action, state) =>
+  reducer: (action, _state) =>
     switch (action) {
-    | Click => ReasonReact.Update({isClicked: !state.isClicked})
+    | Hover => ReasonReact.Update({hasBeenHovered: true})
+    | Unhover => ReasonReact.Update({hasBeenHovered: false})
     },
 
   render: self =>
-    <button onClick={_event => self.send(Click)}>
+    <button
+      onClick=handleClick
+      onMouseEnter={_event => self.send(Hover)}
+      onMouseLeave={_event => self.send(Unhover)}>
       {
-        self.state.isClicked ?
-          ReasonReact.string("You clicked on me!, click again?") :
-          ReasonReact.string("Click me?")
+        self.state.hasBeenHovered ?
+          ReasonReact.string("Hovered!") : ReasonReact.string("Not Hovered")
       }
     </button>,
 };
