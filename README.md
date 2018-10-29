@@ -2,9 +2,13 @@
 
 ## Run Project
 
-- Install dependencies: `yarn install`  
-- Start bucklescript to compile .re to .js: `yarn start`  
-- Start webpack in watch mode to bundle .js files: `yarn webpack`  
+- Install dependencies: `yarn` / `yarn install`
+- Start bucklescript to compile .re to .js: `yarn bucklescript`
+- Start Dev Server: `yarn start`
+
+### Others
+
+- Start webpack in watch mode to bundle .js files: `yarn webpack`
 - Open page in chrome: `yarn chrome`
 
 Have to refresh the page to see changes (no hot reload)
