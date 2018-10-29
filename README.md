@@ -9,7 +9,6 @@
 ### Others
 
 - Start webpack in watch mode to bundle .js files: `yarn webpack`
-- Open page in chrome: `yarn chrome`
 
 Have to refresh the page to see changes (no hot reload)
 
