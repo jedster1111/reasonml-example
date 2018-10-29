@@ -53,7 +53,7 @@ let make = _children => {
 
     | Remove(id) =>
       let copyOfTodos = Array.copy(state.todos);
-      let newTodos = Js.Array.filter(todo => todo.id === id, copyOfTodos);
+      let newTodos = Js.Array.filter(todo => todo.id !== id, copyOfTodos);
       ReasonReact.Update({...state, todos: newTodos});
 
     | HandleInputChange(value) =>
@@ -78,5 +78,6 @@ let make = _children => {
             ),
           )
       }
+      removePoll={id => self.send(Remove(id))}
     />,
 };

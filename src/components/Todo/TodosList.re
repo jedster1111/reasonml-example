@@ -2,7 +2,15 @@ open Todo;
 
 let component = ReasonReact.statelessComponent("TodoList");
 
-let make = (~todos, ~addTodo, ~handleInputChange, ~inputValue, _children) => {
+let make =
+    (
+      ~todos,
+      ~addTodo,
+      ~handleInputChange,
+      ~inputValue,
+      ~removePoll,
+      _children,
+    ) => {
   ...component,
 
   render: _self =>
@@ -11,7 +19,7 @@ let make = (~todos, ~addTodo, ~handleInputChange, ~inputValue, _children) => {
       <ul>
         {
           ReasonReact.array(
-            Array.map(todo => <Todo todo key={todo.id} />, todos),
+            Array.map(todo => <Todo todo key={todo.id} removePoll />, todos),
           )
         }
       </ul>

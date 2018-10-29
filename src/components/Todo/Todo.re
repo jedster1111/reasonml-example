@@ -6,8 +6,14 @@ type todo = {
 
 let component = ReasonReact.statelessComponent("Todo");
 
-let make = (~todo, _children) => {
+let make = (~todo, ~removePoll, _children) => {
   ...component,
 
-  render: _self => <li> {ReasonReact.string(todo.text)} </li>,
+  render: _self =>
+    <li>
+      {ReasonReact.string(todo.text)}
+      <button onClick={_event => removePoll(todo.id)}>
+        {ReasonReact.string("Remove")}
+      </button>
+    </li>,
 };
