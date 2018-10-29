@@ -3,7 +3,7 @@ open Todo;
 type actions =
   | Add(string)
   | Close(string)
-  | ReOpen(string)
+  | Open(string)
   | Remove(string)
   | HandleInputChange(string);
 
@@ -41,7 +41,7 @@ let make = _children => {
       newTodos[todoToUpdateIndex] = closedTodo;
       ReasonReact.Update({...state, todos: newTodos});
 
-    | ReOpen(id) =>
+    | Open(id) =>
       let todoToUpdateIndex =
         Js.Array.findIndex(todo => todo.id === id, state.todos);
       let todoToUpdate = state.todos[todoToUpdateIndex];
@@ -78,6 +78,8 @@ let make = _children => {
             ),
           )
       }
-      removePoll={id => self.send(Remove(id))}
+      removeTodo={id => self.send(Remove(id))}
+      openTodo={id => self.send(Open(id))}
+      closeTodo={id => self.send(Close(id))}
     />,
 };

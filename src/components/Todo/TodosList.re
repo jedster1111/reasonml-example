@@ -8,7 +8,9 @@ let make =
       ~addTodo,
       ~handleInputChange,
       ~inputValue,
-      ~removePoll,
+      ~removeTodo,
+      ~openTodo,
+      ~closeTodo,
       _children,
     ) => {
   ...component,
@@ -19,7 +21,11 @@ let make =
       <ul>
         {
           ReasonReact.array(
-            Array.map(todo => <Todo todo key={todo.id} removePoll />, todos),
+            Array.map(
+              todo =>
+                <Todo todo key={todo.id} removeTodo openTodo closeTodo />,
+              todos,
+            ),
           )
         }
       </ul>
