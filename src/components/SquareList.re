@@ -31,15 +31,16 @@ let make = _children => {
       <div className="item-list">
         {
           ReasonReact.array(
-            List.map(
-              square =>
-                <Square
-                  key={square.id}
-                  handleClick={_event => self.send(Remove(square.id))}
-                />,
-              self.state.items,
-            )
-            |> Array.of_list,
+            Array.of_list(
+              List.map(
+                square =>
+                  <Square
+                    key={square.id}
+                    handleClick={_event => self.send(Remove(square.id))}
+                  />,
+                self.state.items,
+              ),
+            ),
           )
         }
       </div>
