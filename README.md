@@ -1,5 +1,13 @@
 # reasonml-example
 
+## Resources
+
+I found this tutorial series by Lucas Reis very useful.
+
+- [Part 1](https://lucasmreis.github.io/blog/learning-reasonml-part-1/)
+- [Part 2](https://lucasmreis.github.io/blog/learning-reasonml-part-2/)
+- [Part 3](https://lucasmreis.github.io/blog/learning-reasonml-part-3/)
+
 ## Run Project
 
 - Install dependencies: `yarn` / `yarn install`
