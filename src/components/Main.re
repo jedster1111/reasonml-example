@@ -3,5 +3,5 @@ let component = ReasonReact.statelessComponent("Main");
 let make = _children => {
   ...component,
 
-  render: _self => <TodosListContainer />,
+  render: _self => <div> <TodosListContainer /> <PostsDisplay /> </div>,
 };

@@ -17,7 +17,7 @@ let make =
 
   render: _self =>
     <div>
-      {ReasonReact.string("Hello")}
+      {ReasonReact.string("Todos")}
       <ul>
         {
           ReasonReact.array(
