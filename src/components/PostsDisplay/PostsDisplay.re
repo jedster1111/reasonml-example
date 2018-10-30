@@ -76,7 +76,7 @@ let render = self =>
     <div className="posts-display">
       <p>
         {string("An example of side effects. Fetching posts from ")}
-        <a href="https://jsonplaceholder.typicode.com">
+        <a href="https://jsonplaceholder.typicode.com" target="_blank">
           {string("JSON Placeholder")}
         </a>
       </p>
