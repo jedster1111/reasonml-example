@@ -21,7 +21,7 @@ let make = _children => {
     | Add(item) => ReasonReact.Update({items: [item, ...state.items]})
     | Remove(id) =>
       ReasonReact.Update({
-        items: List.filter(square => square.id !== id, state.items),
+        items: Belt.List.keep(state.items, square => square.id != id),
       })
     },
 
@@ -30,18 +30,14 @@ let make = _children => {
       {ReasonReact.string("Hello can you see this?")}
       <div className="item-list">
         {
-          ReasonReact.array(
-            Array.of_list(
-              List.map(
-                square =>
-                  <Square
-                    key={square.id}
-                    handleClick={_event => self.send(Remove(square.id))}
-                  />,
-                self.state.items,
-              ),
-            ),
+          Belt.List.map(self.state.items, square =>
+            <Square
+              key={square.id}
+              handleClick={_event => self.send(Remove(square.id))}
+            />
           )
+          ->Array.of_list
+          ->ReasonReact.array
         }
       </div>
       <div className="buttons-container">

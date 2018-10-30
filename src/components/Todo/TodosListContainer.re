@@ -8,57 +8,72 @@ type actions =
   | HandleInputChange(string);
 
 type state = {
-  todos: array(todo),
+  todos: list(todo),
   todoInput: string,
 };
+
+let reducer = (action, state) =>
+  switch (action) {
+  | Add(text) =>
+    switch (text) {
+    | "" => ReasonReact.NoUpdate
+    | _ =>
+      ReasonReact.Update({
+        todos: [{id: Uuid.v4(), text, isDone: false}, ...state.todos],
+        todoInput: "",
+      })
+    }
+
+  | Close(id) =>
+    let todo = state.todos->Belt.List.getBy(todo => todo.id == id);
+    switch (todo) {
+    | None => ReasonReact.NoUpdate
+    | Some(todo) =>
+      let newTodo = {...todo, isDone: true};
+      let newTodos =
+        state.todos
+        ->Belt.List.map(todo =>
+            switch (todo) {
+            | _ when todo.id == id => newTodo
+            | _ => todo
+            }
+          );
+      ReasonReact.Update({...state, todos: newTodos});
+    };
+
+  | Open(id) =>
+    let todo = state.todos->Belt.List.getBy(todo => todo.id == id);
+    switch (todo) {
+    | None => ReasonReact.NoUpdate
+    | Some(todo) =>
+      let newTodo = {...todo, isDone: false};
+      let newTodos =
+        state.todos
+        ->Belt.List.map(todo =>
+            switch (todo) {
+            | _ when todo.id == id => newTodo
+            | _ => todo
+            }
+          );
+      ReasonReact.Update({...state, todos: newTodos});
+    };
+
+  | Remove(id) =>
+    let newTodos = state.todos->Belt.List.keep(todo => todo.id != id);
+    ReasonReact.Update({...state, todos: newTodos});
+
+  | HandleInputChange(value) =>
+    ReasonReact.Update({...state, todoInput: value})
+  };
 
 let component = ReasonReact.reducerComponent("TodoContainer");
 
 let make = _children => {
   ...component,
 
-  initialState: () => {todos: [||], todoInput: ""},
+  initialState: () => {todos: [], todoInput: ""},
 
-  reducer: (action, state) =>
-    switch (action) {
-    | Add(text) =>
-      ReasonReact.Update({
-        todos:
-          Array.append(
-            [|{id: Uuid.v4(), text, isDone: false}|],
-            state.todos,
-          ),
-        todoInput: "",
-      })
-
-    | Close(id) =>
-      let todoToUpdateIndex =
-        Js.Array.findIndex(todo => todo.id === id, state.todos);
-      let todoToUpdate = state.todos[todoToUpdateIndex];
-
-      let closedTodo = {...todoToUpdate, isDone: true};
-      let newTodos = Array.copy(state.todos);
-      newTodos[todoToUpdateIndex] = closedTodo;
-      ReasonReact.Update({...state, todos: newTodos});
-
-    | Open(id) =>
-      let todoToUpdateIndex =
-        Js.Array.findIndex(todo => todo.id === id, state.todos);
-      let todoToUpdate = state.todos[todoToUpdateIndex];
-
-      let openedTodo = {...todoToUpdate, isDone: false};
-      let newTodos = Array.copy(state.todos);
-      newTodos[todoToUpdateIndex] = openedTodo;
-      ReasonReact.Update({...state, todos: newTodos});
-
-    | Remove(id) =>
-      let copyOfTodos = Array.copy(state.todos);
-      let newTodos = Js.Array.filter(todo => todo.id !== id, copyOfTodos);
-      ReasonReact.Update({...state, todos: newTodos});
-
-    | HandleInputChange(value) =>
-      ReasonReact.Update({...state, todoInput: value})
-    },
+  reducer,
 
   render: self =>
     <TodosList
@@ -72,11 +87,9 @@ let make = _children => {
       inputValue={self.state.todoInput}
       handleInputChange={
         event =>
-          self.send(
-            HandleInputChange(
-              ReactDOMRe.domElementToObj(ReactEventRe.Form.target(event))##value,
-            ),
-          )
+          ReactEventRe.Form.target(event)->ReactDOMRe.domElementToObj##value
+          ->HandleInputChange
+          ->(self.send)
       }
       removeTodo={id => self.send(Remove(id))}
       openTodo={id => self.send(Open(id))}

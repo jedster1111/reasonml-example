@@ -20,13 +20,12 @@ let make =
       {ReasonReact.string("Todos")}
       <ul>
         {
-          ReasonReact.array(
-            Array.map(
-              todo =>
-                <Todo todo key={todo.id} removeTodo openTodo closeTodo />,
-              todos,
-            ),
-          )
+          todos
+          ->Belt.List.map(todo =>
+              <Todo todo key={todo.id} removeTodo openTodo closeTodo />
+            )
+          ->Array.of_list
+          ->ReasonReact.array
         }
       </ul>
       <form onSubmit=addTodo>

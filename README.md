@@ -6,7 +6,13 @@
   - [Part 1](https://lucasmreis.github.io/blog/learning-reasonml-part-1/)
   - [Part 2](https://lucasmreis.github.io/blog/learning-reasonml-part-2/)
   - [Part 3](https://lucasmreis.github.io/blog/learning-reasonml-part-3/)
+- [Common Js idioms in ReasonML](https://blog.g2i.co/common-javascript-idioms-in-reasonml-900a731b5620)
 - Using [Json Placeholder](https://jsonplaceholder.typicode.com) for api call data.
+
+## Tools
+
+- [Ocaml to Reason translator Chrome extension](https://chrome.google.com/webstore/detail/reason-tools/kmdelnjbembbiodplmhgfjpecibfhadd)
+  - Since Reason's online presence (particularly for help) is quite small at the moment, might have better luck looking for OCaml questions and translating any code into Reason.
 
 ## Run Project
 

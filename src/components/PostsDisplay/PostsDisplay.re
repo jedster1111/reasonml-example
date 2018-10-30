@@ -93,7 +93,7 @@ let render = self =>
     </div>
   );
 
-let component = ReasonReact.reducerComponent("WeatherDisplayContainer");
+let component = ReasonReact.reducerComponent("PostsDisplay");
 
 let make = _children => {
   ...component,
