@@ -51,7 +51,7 @@
 - Documentation isn't the clearest
 - Much smaller and younger community than Js
 - Tooling isn't as well developed at the moment
-  - Particularly editor support
+  - Particularly editor support (I've only used VSCode personally)
     - Not sure about IntelliJ IDEA specifically
 - No clear consensus on how to handle global state
   - _Seen claims that the strong type safety negates the problems with prop drilling_
