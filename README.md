@@ -12,6 +12,10 @@ A repo to try out building some basic examples using Reason.
 - [A good overview of Reason](https://marmelab.com/blog/2018/04/09/enjoy-painless-typing-with-reason.html)
 - Using [Json Placeholder](https://jsonplaceholder.typicode.com) to try out api calls.
 
+### My Thoughts
+
+[Thoughts](./thoughts.md)
+
 ## Tools
 
 - [Ocaml to Reason translator Chrome extension](https://chrome.google.com/webstore/detail/reason-tools/kmdelnjbembbiodplmhgfjpecibfhadd)
