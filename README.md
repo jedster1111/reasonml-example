@@ -1,5 +1,7 @@
 # reasonml-example
 
+A repo to try out building some basic examples using Reason.
+
 ## Resources
 
 - I found this tutorial series by Lucas Reis very useful.
@@ -7,26 +9,27 @@
   - [Part 2](https://lucasmreis.github.io/blog/learning-reasonml-part-2/)
   - [Part 3](https://lucasmreis.github.io/blog/learning-reasonml-part-3/)
 - [Common Js idioms in ReasonML](https://blog.g2i.co/common-javascript-idioms-in-reasonml-900a731b5620)
-- Using [Json Placeholder](https://jsonplaceholder.typicode.com) for api call data.
+- Using [Json Placeholder](https://jsonplaceholder.typicode.com) to try out api calls.
 
 ## Tools
 
 - [Ocaml to Reason translator Chrome extension](https://chrome.google.com/webstore/detail/reason-tools/kmdelnjbembbiodplmhgfjpecibfhadd)
   - Since Reason's online presence (particularly for help) is quite small at the moment, might have better luck looking for OCaml questions and translating any code into Reason.
+- The [Reason Discord channel](https://discordapp.com/invite/reasonml) seems like a good place to get some help if you get stuck (Pretty active and people seem willing to answer questions).
 
 ## Run Project
 
-- Install dependencies: `yarn` / `yarn install`
+- Install dependencies: `yarn` or `yarn install`
 - Start bucklescript to compile .re to .js: `yarn bucklescript`
-- Start Dev Server: `yarn start`
+- Start Webpack Dev Server: `yarn start`
+  - Have to refresh the page to see changes (no hot reload)
 
 ### Others
 
 - Start webpack in watch mode to bundle .js files: `yarn webpack`
 
-Have to refresh the page to see changes (no hot reload)
 
-**For more elaborate ReasonReact examples**, please see https://github.com/reasonml-community/reason-react-example
+**For more elaborate ReasonReact examples**, please see <https://github.com/reasonml-community/reason-react-example>
 
 ## Build for Production
 
