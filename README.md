@@ -9,6 +9,7 @@ A repo to try out building some basic examples using Reason.
   - [Part 2](https://lucasmreis.github.io/blog/learning-reasonml-part-2/)
   - [Part 3](https://lucasmreis.github.io/blog/learning-reasonml-part-3/)
 - [Common Js idioms in ReasonML](https://blog.g2i.co/common-javascript-idioms-in-reasonml-900a731b5620)
+- [A good overview of Reason](https://marmelab.com/blog/2018/04/09/enjoy-painless-typing-with-reason.html)
 - Using [Json Placeholder](https://jsonplaceholder.typicode.com) to try out api calls.
 
 ## Tools
@@ -22,12 +23,12 @@ A repo to try out building some basic examples using Reason.
 - Install dependencies: `yarn` or `yarn install`
 - Start bucklescript to compile .re to .js: `yarn bucklescript`
 - Start Webpack Dev Server: `yarn start`
+  - Can be accessed on `http://localhost:8080`
   - Have to refresh the page to see changes (no hot reload)
 
 ### Others
 
 - Start webpack in watch mode to bundle .js files: `yarn webpack`
-
 
 **For more elaborate ReasonReact examples**, please see <https://github.com/reasonml-community/reason-react-example>
 
