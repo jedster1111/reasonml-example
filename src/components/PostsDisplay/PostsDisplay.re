@@ -64,9 +64,9 @@ let renderPosts = posts =>
   <div className="posts-display">
     <ul>
       {
-        List.map(post => renderPost(post), posts)
-        |> Array.of_list
-        |> ReasonReact.array
+        Belt.List.map(posts, post => renderPost(post))
+        -> Array.of_list
+        -> ReasonReact.array
       }
     </ul>
   </div>;

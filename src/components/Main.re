@@ -26,9 +26,25 @@ let make = _children => {
     {route: page};
   },
 
-  reducer: (action, _state) =>
+  reducer: (action, state) =>
     switch (action) {
-    | UpdatePage(route) => ReasonReact.Update({route: route})
+    | UpdatePage(route) =>
+      ReasonReact.UpdateWithSideEffects(
+        {route: route},
+        (
+          _self => {
+            if (route != state.route)
+              {
+                ReasonReact.Router.push(switch(route){
+                  | Todo => "/todo"
+                  | Posts => "/posts"
+                  | Home => "/"
+                  | NotFound => "/404"
+                })
+              };
+            }
+        ),
+      )
     },
 
   didMount: self => {
